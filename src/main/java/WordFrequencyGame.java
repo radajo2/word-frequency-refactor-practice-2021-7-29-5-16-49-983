@@ -11,9 +11,8 @@ public class WordFrequencyGame {
         } else {
             try {
                 //split the input string with 1 to n pieces of spaces
-                List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
-
-                return consolidateWordFrequencies(wordInfoList);
+                List<WordInfo> wordFrequencies = calculateWordFrequency(sentence);
+                return consolidateWordFrequencies(wordFrequencies);
             } catch (Exception e) {
 
 
@@ -35,8 +34,8 @@ public class WordFrequencyGame {
         return wordInfos;
     }
 
-    private String consolidateWordFrequencies(List<WordInfo> wordInfoList) {
-        return wordInfoList
+    private String consolidateWordFrequencies(List<WordInfo> wordFrequencies) {
+        return wordFrequencies
                 .stream()
                 .sorted((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount())
                 .map(word -> word.getWord() + " " + word.getWordCount())
