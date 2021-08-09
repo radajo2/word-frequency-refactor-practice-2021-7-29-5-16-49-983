@@ -11,7 +11,7 @@ public class WordFrequencyGame {
         } else {
             try {
                 //split the input string with 1 to n pieces of spaces
-                List<WordInfo> wordInfoList = calculateWordFrequency(sentence);
+                List<WordInfo> wordInfoList = calculateWordFrequencyTemp(sentence);
 
                 wordInfoList.sort((w1, w2) -> w2.getWordCount() - w1.getWordCount());
 
@@ -49,18 +49,18 @@ public class WordFrequencyGame {
         return wordInfoList;
     }
 
-//    private List<WordInfo> calculateWordFrequencyTemp(String sentence) {
-//        List<String> words = Arrays.asList(sentence.split(BLANK_SPACE));
-//        List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
-//
-//        List<WordInfo> wordInfos = new ArrayList<>();
-//        distinctWords.forEach(distinctWord -> {
-//            int count = (int) words.stream().filter(word -> word.equals(distinctWord)).count();
-//            WordInfo wordInfo = new WordInfo (distinctWord, count);
-//            wordInfos.add(wordInfo);
-//        });
-//        return wordInfos;
-//    }
+    private List<WordInfo> calculateWordFrequencyTemp(String sentence) {
+        List<String> words = Arrays.asList(sentence.split(BLANK_SPACE));
+        List<String> distinctWords = words.stream().distinct().collect(Collectors.toList());
+
+        List<WordInfo> wordInfos = new ArrayList<>();
+        distinctWords.forEach(distinctWord -> {
+            int count = (int) words.stream().filter(word -> word.equals(distinctWord)).count();
+            WordInfo wordInfo = new WordInfo (distinctWord, count);
+            wordInfos.add(wordInfo);
+        });
+        return wordInfos;
+    }
 
     private Map<String,List<WordInfo>> getListMap(List<WordInfo> wordInfoList) {
         Map<String, List<WordInfo>> map = new HashMap<>();
