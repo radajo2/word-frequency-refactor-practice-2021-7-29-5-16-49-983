@@ -8,16 +8,12 @@ public class WordFrequencyGame {
 
         if (sentence.split(BLANK_SPACE).length==1) {
             return sentence + " 1";
-        } else {
-            try {
-                //split the input string with 1 to n pieces of spaces
-                List<WordInfo> wordFrequencies = calculateWordFrequency(sentence);
-                return consolidateWordFrequencies(wordFrequencies);
-            } catch (Exception e) {
-
-
-                return "Calculate Error";
-            }
+        }
+        try {
+            List<WordInfo> wordFrequencies = calculateWordFrequency(sentence);
+            return consolidateWordFrequencies(wordFrequencies);
+        } catch (Exception e) {
+            return "Calculate Error";
         }
     }
 
