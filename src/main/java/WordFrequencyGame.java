@@ -1,24 +1,22 @@
 import java.util.*;
 
 public class WordFrequencyGame {
+    public static final String BLANK_SPACE = "\\s+";
+
     public String getResult(String sentence){
 
-
-        if (sentence.split("\\s+").length==1) {
+        if (sentence.split(BLANK_SPACE).length==1) {
             return sentence + " 1";
         } else {
-
             try {
-
                 //split the input string with 1 to n pieces of spaces
-                String[] words = sentence.split("\\s+");
+                String[] words = sentence.split(BLANK_SPACE);
 
                 List<WordInfo> wordInfoList = new ArrayList<>();
                 for (String word : words) {
                     WordInfo wordInfo = new WordInfo(word, 1);
                     wordInfoList.add(wordInfo);
                 }
-
                 //get the map for the next step of sizing the same word
                 Map<String, List<WordInfo>> map =getListMap(wordInfoList);
 
@@ -60,10 +58,6 @@ public class WordFrequencyGame {
                 map.get(wordInfo.getValue()).add(wordInfo);
             }
         }
-
-
         return map;
     }
-
-
 }
